@@ -33,7 +33,7 @@ int main() {
       while(cin>>name>>text){
         Student new_ = Student(name, text);
         Students.push_back(new_);
-    } 
+        } 
       cout <<Students.size()<<endl<<Student::SeeBlackBoard();
     return 0;
 }
