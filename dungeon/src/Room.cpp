@@ -7,14 +7,14 @@ Room::Room(bool isExit, int idx, vector<Object*> objs){
 }
 
 bool Room::popObject(Object* obj){
-    for(auto i: this->objects){
-        if(i == obj){
-            this -> objects.erase(i);
+    for(auto it=objects.begin();it!=objects.end(); it++){
+        if(*it == obj){
+            objects.erase(it);
             return true;
         }
     }
-
     return false;
+
 }
 
 void Room::setUpRoom(Room* r){
