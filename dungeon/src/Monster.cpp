@@ -1,4 +1,4 @@
-#include "Monster.h"
+#include "../include/Monster.h"
 
 Monster::Monster(): GameCharacter("", "Monster", 0, 0, 0) {}
 
@@ -11,6 +11,10 @@ int calculateDamage(int atk, int def){
 
 bool Monster::getIsBoss(){
     return isBoss;
+}
+
+void Monster::setIsBoss(int _isBoss){
+    isBoss = _isBoss;
 }
 
 void Monster::printStatus(){
@@ -46,13 +50,15 @@ bool Monster::triggerEvent(Object* object){
             setCurrentHealth(getCurrentHealth()-player_dmg);
             if(getCurrentHealth() <= 0) break;
             cout << "Monster " << getName() << " deals " << monster_dmg
-                << "damages to Player " << player -> getName() << endl;
+                << " damages to Player " << player -> getName() << endl;
             player -> setCurrentHealth(player->getCurrentHealth() - monster_dmg);
         }
-        if(player -> getCurrentHealth() <= 0 || isBoss){
+        if(player -> getCurrentHealth() <= 0){
+            cout << "Player " << player -> getName() << " is dead." << endl;
             return false;
         }
         cout << "Monster " << getName() << " has been killed." << endl; 
+        player -> getCurrentRoom() -> popObject(this);
         return true;
     }
 

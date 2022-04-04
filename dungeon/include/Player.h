@@ -15,8 +15,8 @@ class Item;
 class Player: public GameCharacter
 {
 private:
-    Room* currentRoom;
-    Room* previousRoom;
+    Room* currentRoom = nullptr;
+    Room* previousRoom = nullptr;
     vector<Item> inventory;
 public:
     Player();

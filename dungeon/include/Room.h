@@ -11,10 +11,10 @@ using namespace std;
 class Room
 {
 private:
-    Room* upRoom;
-    Room* downRoom;
-    Room* leftRoom;
-    Room* rightRoom;
+    Room* upRoom = nullptr;
+    Room* downRoom = nullptr;
+    Room* leftRoom = nullptr;
+    Room* rightRoom = nullptr;
     bool isExit;
     int index;
     vector<Object*> objects; /*contain 1 or multiple objects, including monster, npc, etc*/

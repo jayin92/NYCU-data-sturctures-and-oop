@@ -1,4 +1,4 @@
-#include "NPC.h"
+#include "../include/NPC.h"
 
 NPC::NPC(string name, string script, vector<Item> com):
     GameCharacter(name, "NPC", 0, 0, 0), script(script), commodity(com) {}
@@ -6,7 +6,7 @@ NPC::NPC(string name, string script, vector<Item> com):
 void NPC::listCommodity(){
     int idx = 0;
     for(auto i: this->commodity){
-        cout << idx++ << ": " << i.getName() << "HP: " << i.getHealth() << ", ATK: " << i.getAttack() 
+        cout << idx++ << ": " << i.getName() << " HP: " << i.getHealth() << ", ATK: " << i.getAttack() 
             << ", DEF: " << i.getDefense() << endl;
     }
 }

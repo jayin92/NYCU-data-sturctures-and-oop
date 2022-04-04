@@ -1,4 +1,4 @@
-#include "GameCharacter.h"
+#include "../include/GameCharacter.h"
 
 GameCharacter::GameCharacter():
     Object("", "GameCharacter"), maxHealth(0), currentHealth(0), attack(0), defense(0) {}

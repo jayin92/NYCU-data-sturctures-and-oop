@@ -1,20 +1,20 @@
-#include "Object.h"
+#include "../include/Object.h"
 
 Object::Object(): name(""), tag("") {}
 Object::Object(string _name, string _tag): name(_name), tag(_tag) {}
 
-void Object::setName(string name){
-    this -> name = name;
+void Object::setName(string _name){
+    name = _name;
 }
 
-void Object::setTag(string tag){
-    this -> tag = tag;
+void Object::setTag(string _tag){
+    tag = _tag;
 }
 
 string Object::getName(){
-    return this -> name;
+    return name;
 }
 
 string Object::getTag(){
-    return this -> tag;
+    return tag;
 }

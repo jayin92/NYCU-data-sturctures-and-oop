@@ -22,6 +22,7 @@ public:
     /* the combat system.                           */
     bool triggerEvent(Object*);
     bool getIsBoss();
+    void setIsBoss(int);
     void printStatus();
 };
 

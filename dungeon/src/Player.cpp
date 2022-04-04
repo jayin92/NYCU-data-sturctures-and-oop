@@ -1,4 +1,6 @@
-#include "Player.h"
+#include "../include/Player.h"
+
+Player::Player(){}
 
 Player::Player(string name, int hp, int atk, int def):
     GameCharacter(name, "Player", hp, atk, def) {}
@@ -6,6 +8,8 @@ Player::Player(string name, int hp, int atk, int def):
 
 void Player::addItem(Item new_item){
     inventory.push_back(new_item);
+    increaseStates(new_item.getHealth(), 
+        new_item.getAttack(), new_item.getDefense());
 }
 
 void Player::increaseStates(int hp, int atk, int def){

@@ -1,10 +1,7 @@
-#include "Room.h"
+#include "../include/Room.h"
 
-Room::Room(bool isExit, int idx, vector<Object*> objs){
-    this -> isExit = isExit;
-    this -> index = idx;
-    this -> objects = objs;
-}
+Room::Room() {}
+Room::Room(bool isExit, int idx, vector<Object*> objs): isExit(isExit), index(idx), objects(objs){}
 
 bool Room::popObject(Object* obj){
     for(auto it=objects.begin();it!=objects.end(); it++){
@@ -42,21 +39,29 @@ void Room::setIndex(int idx){
 }
 
 vector<Object*> Room::getObjects(){
-    return this -> objects;
+    return objects;
 }
 
 Room* Room::getUpRoom(){
-    return this -> upRoom;
+    return upRoom;
 }
 
 Room* Room::getDownRoom(){
-    return this -> downRoom;
+    return downRoom;
 }
 
 Room* Room::getLeftRoom(){
-    return this -> leftRoom;
+    return leftRoom;
 }
 
 Room* Room::getRightRoom(){
-    return this -> rightRoom;
+    return rightRoom;
+}
+
+bool Room::getIsExit(){
+    return isExit;
+}
+
+int Room::getIndex(){
+    return index;
 }
