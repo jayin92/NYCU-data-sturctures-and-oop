@@ -5,11 +5,11 @@
 
 WORKDIR = %cd%
 
-CC = gcc.exe
-CXX = g++.exe
-AR = ar.exe
-LD = g++.exe
-WINDRES = windres.exe
+CC = gcc
+CXX = g++
+AR = ar
+LD = g++
+WINDRES = windres
 
 INC = include
 SRC = src
@@ -27,9 +27,9 @@ RCFLAGS_DEBUG = $(RCFLAGS)
 LIBDIR_DEBUG = $(LIBDIR)
 LIB_DEBUG = $(LIB)
 LDFLAGS_DEBUG = $(LDFLAGS)
-OBJDIR_DEBUG = obj\\Debug
+OBJDIR_DEBUG = obj/Debug
 DEP_DEBUG = 
-OUT_DEBUG = bin\\Debug\\Dungeon.exe
+OUT_DEBUG = bin/Debug/Dungeon
 
 INC_RELEASE = $(INC)
 CFLAGS_RELEASE = $(CFLAGS) -O2
@@ -38,21 +38,21 @@ RCFLAGS_RELEASE = $(RCFLAGS)
 LIBDIR_RELEASE = $(LIBDIR)
 LIB_RELEASE = $(LIB)
 LDFLAGS_RELEASE = $(LDFLAGS) -s
-OBJDIR_RELEASE = obj\\Release
+OBJDIR_RELEASE = obj/Release
 DEP_RELEASE = 
-OUT_RELEASE = bin\\Release\\Dungeon.exe
+OUT_RELEASE = bin/Release/Dungeon
 
-OBJ_DEBUG = $(OBJDIR_DEBUG)\\main.o $(OBJDIR_DEBUG)\\Room.o $(OBJDIR_DEBUG)\\Record.o $(OBJDIR_DEBUG)\\Player.o $(OBJDIR_DEBUG)\\Object.o $(OBJDIR_DEBUG)\\NPC.o $(OBJDIR_DEBUG)\\Monster.o $(OBJDIR_DEBUG)\\Item.o $(OBJDIR_DEBUG)\\GameCharacter.o $(OBJDIR_DEBUG)\\Dungeon.o
+OBJ_DEBUG = $(OBJDIR_DEBUG)/main.o $(OBJDIR_DEBUG)/Room.o $(OBJDIR_DEBUG)/Record.o $(OBJDIR_DEBUG)/Player.o $(OBJDIR_DEBUG)/Object.o $(OBJDIR_DEBUG)/NPC.o $(OBJDIR_DEBUG)/Monster.o $(OBJDIR_DEBUG)/Item.o $(OBJDIR_DEBUG)/GameCharacter.o $(OBJDIR_DEBUG)/Dungeon.o
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)\\main.o $(OBJDIR_RELEASE)\\Room.o $(OBJDIR_RELEASE)\\Record.o $(OBJDIR_RELEASE)\\Player.o $(OBJDIR_RELEASE)\\Object.o $(OBJDIR_RELEASE)\\NPC.o $(OBJDIR_RELEASE)\\Monster.o $(OBJDIR_RELEASE)\\Item.o $(OBJDIR_RELEASE)\\GameCharacter.o $(OBJDIR_RELEASE)\\Dungeon.o
+OBJ_RELEASE = $(OBJDIR_RELEASE)/main.o $(OBJDIR_RELEASE)/Room.o $(OBJDIR_RELEASE)/Record.o $(OBJDIR_RELEASE)/Player.o $(OBJDIR_RELEASE)/Object.o $(OBJDIR_RELEASE)/NPC.o $(OBJDIR_RELEASE)/Monster.o $(OBJDIR_RELEASE)/Item.o $(OBJDIR_RELEASE)/GameCharacter.o $(OBJDIR_RELEASE)/Dungeon.o
 
 all: debug release
 
 clean: clean_debug clean_release
 
 before_debug: 
-	cmd /c if not exist bin\\Debug md bin\\Debug
-	cmd /c if not exist $(OBJDIR_DEBUG) md $(OBJDIR_DEBUG)
+	mkdir -p bin/Debug
+	mkdir -p $(OBJDIR_DEBUG)
 
 after_debug: 
 
@@ -61,44 +61,44 @@ debug: before_debug out_debug after_debug
 out_debug: before_debug $(OBJ_DEBUG) $(DEP_DEBUG)
 	$(LD) $(LIBDIR_DEBUG) -o $(OUT_DEBUG) $(OBJ_DEBUG)  $(LDFLAGS_DEBUG) $(LIB_DEBUG)
 
-$(OBJDIR_DEBUG)\\main.o: $(SRC)\\main.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)\\main.cpp -o $(OBJDIR_DEBUG)\\main.o
+$(OBJDIR_DEBUG)/main.o: $(SRC)/main.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)/main.cpp -o $(OBJDIR_DEBUG)/main.o
 
-$(OBJDIR_DEBUG)\\Room.o: $(SRC)\\Room.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)\\Room.cpp -o $(OBJDIR_DEBUG)\\Room.o
+$(OBJDIR_DEBUG)/Room.o: $(SRC)/Room.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)/Room.cpp -o $(OBJDIR_DEBUG)/Room.o
 
-$(OBJDIR_DEBUG)\\Record.o: $(SRC)\\Record.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)\\Record.cpp -o $(OBJDIR_DEBUG)\\Record.o
+$(OBJDIR_DEBUG)/Record.o: $(SRC)/Record.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)/Record.cpp -o $(OBJDIR_DEBUG)/Record.o
 
-$(OBJDIR_DEBUG)\\Player.o: $(SRC)\\Player.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)\\Player.cpp -o $(OBJDIR_DEBUG)\\Player.o
+$(OBJDIR_DEBUG)/Player.o: $(SRC)/Player.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)/Player.cpp -o $(OBJDIR_DEBUG)/Player.o
 
-$(OBJDIR_DEBUG)\\Object.o: $(SRC)\\Object.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)\\Object.cpp -o $(OBJDIR_DEBUG)\\Object.o
+$(OBJDIR_DEBUG)/Object.o: $(SRC)/Object.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)/Object.cpp -o $(OBJDIR_DEBUG)/Object.o
 
-$(OBJDIR_DEBUG)\\NPC.o: $(SRC)\\NPC.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)\\NPC.cpp -o $(OBJDIR_DEBUG)\\NPC.o
+$(OBJDIR_DEBUG)/NPC.o: $(SRC)/NPC.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)/NPC.cpp -o $(OBJDIR_DEBUG)/NPC.o
 
-$(OBJDIR_DEBUG)\\Monster.o: $(SRC)\\Monster.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)\\Monster.cpp -o $(OBJDIR_DEBUG)\\Monster.o
+$(OBJDIR_DEBUG)/Monster.o: $(SRC)/Monster.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)/Monster.cpp -o $(OBJDIR_DEBUG)/Monster.o
 
-$(OBJDIR_DEBUG)\\Item.o: $(SRC)\\Item.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)\\Item.cpp -o $(OBJDIR_DEBUG)\\Item.o
+$(OBJDIR_DEBUG)/Item.o: $(SRC)/Item.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)/Item.cpp -o $(OBJDIR_DEBUG)/Item.o
 
-$(OBJDIR_DEBUG)\\GameCharacter.o: $(SRC)\\GameCharacter.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)\\GameCharacter.cpp -o $(OBJDIR_DEBUG)\\GameCharacter.o
+$(OBJDIR_DEBUG)/GameCharacter.o: $(SRC)/GameCharacter.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)/GameCharacter.cpp -o $(OBJDIR_DEBUG)/GameCharacter.o
 
-$(OBJDIR_DEBUG)\\Dungeon.o: $(SRC)\\Dungeon.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)\\Dungeon.cpp -o $(OBJDIR_DEBUG)\\Dungeon.o
+$(OBJDIR_DEBUG)/Dungeon.o: $(SRC)/Dungeon.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)/Dungeon.cpp -o $(OBJDIR_DEBUG)/Dungeon.o
 
 clean_debug: 
-	cmd /c del /f $(OBJ_DEBUG) $(OUT_DEBUG)
-	cmd /c rd bin\\Debug
-	cmd /c rd $(OBJDIR_DEBUG)
+	rm -rf $(OBJ_DEBUG) $(OUT_DEBUG)
+	rm -rf bin/Debug
+	rm -rf $(OBJDIR_DEBUG)
 
 before_release: 
-	cmd /c if not exist bin\\Release md bin\\Release
-	cmd /c if not exist $(OBJDIR_RELEASE) md $(OBJDIR_RELEASE)
+	mkdir -p bin/Release
+	mkdir -p $(OBJDIR_RELEASE)
 
 after_release: 
 
@@ -107,40 +107,40 @@ release: before_release out_release after_release
 out_release: before_release $(OBJ_RELEASE) $(DEP_RELEASE)
 	$(LD) $(LIBDIR_RELEASE) -o $(OUT_RELEASE) $(OBJ_RELEASE)  $(LDFLAGS_RELEASE) $(LIB_RELEASE)
 
-$(OBJDIR_RELEASE)\\main.o: $(SRC)\\main.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)\\main.cpp -o $(OBJDIR_RELEASE)\\main.o
+$(OBJDIR_RELEASE)/main.o: $(SRC)/main.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)/main.cpp -o $(OBJDIR_RELEASE)/main.o
 
-$(OBJDIR_RELEASE)\\Room.o: $(SRC)\\Room.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)\\Room.cpp -o $(OBJDIR_RELEASE)\\Room.o
+$(OBJDIR_RELEASE)/Room.o: $(SRC)/Room.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)/Room.cpp -o $(OBJDIR_RELEASE)/Room.o
 
-$(OBJDIR_RELEASE)\\Record.o: $(SRC)\\Record.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)\\Record.cpp -o $(OBJDIR_RELEASE)\\Record.o
+$(OBJDIR_RELEASE)/Record.o: $(SRC)/Record.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)/Record.cpp -o $(OBJDIR_RELEASE)/Record.o
 
-$(OBJDIR_RELEASE)\\Player.o: $(SRC)\\Player.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)\\Player.cpp -o $(OBJDIR_RELEASE)\\Player.o
+$(OBJDIR_RELEASE)/Player.o: $(SRC)/Player.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)/Player.cpp -o $(OBJDIR_RELEASE)/Player.o
 
-$(OBJDIR_RELEASE)\\Object.o: $(SRC)\\Object.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)\\Object.cpp -o $(OBJDIR_RELEASE)\\Object.o
+$(OBJDIR_RELEASE)/Object.o: $(SRC)/Object.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)/Object.cpp -o $(OBJDIR_RELEASE)/Object.o
 
-$(OBJDIR_RELEASE)\\NPC.o: $(SRC)\\NPC.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)\\NPC.cpp -o $(OBJDIR_RELEASE)\\NPC.o
+$(OBJDIR_RELEASE)/NPC.o: $(SRC)/NPC.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)/NPC.cpp -o $(OBJDIR_RELEASE)/NPC.o
 
-$(OBJDIR_RELEASE)\\Monster.o: $(SRC)\\Monster.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)\\Monster.cpp -o $(OBJDIR_RELEASE)\\Monster.o
+$(OBJDIR_RELEASE)/Monster.o: $(SRC)/Monster.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)/Monster.cpp -o $(OBJDIR_RELEASE)/Monster.o
 
-$(OBJDIR_RELEASE)\\Item.o: $(SRC)\\Item.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)\\Item.cpp -o $(OBJDIR_RELEASE)\\Item.o
+$(OBJDIR_RELEASE)/Item.o: $(SRC)/Item.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)/Item.cpp -o $(OBJDIR_RELEASE)/Item.o
 
-$(OBJDIR_RELEASE)\\GameCharacter.o: $(SRC)\\GameCharacter.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)\\GameCharacter.cpp -o $(OBJDIR_RELEASE)\\GameCharacter.o
+$(OBJDIR_RELEASE)/GameCharacter.o: $(SRC)/GameCharacter.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)/GameCharacter.cpp -o $(OBJDIR_RELEASE)/GameCharacter.o
 
-$(OBJDIR_RELEASE)\\Dungeon.o: $(SRC)\\Dungeon.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)\\Dungeon.cpp -o $(OBJDIR_RELEASE)\\Dungeon.o
+$(OBJDIR_RELEASE)/Dungeon.o: $(SRC)/Dungeon.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)/Dungeon.cpp -o $(OBJDIR_RELEASE)/Dungeon.o
 
 clean_release: 
-	cmd /c del /f $(OBJ_RELEASE) $(OUT_RELEASE)
-	cmd /c rd bin\\Release
-	cmd /c rd $(OBJDIR_RELEASE)
+	rm -rf $(OBJ_RELEASE) $(OUT_RELEASE)
+	rm -rf bin/Release
+	rm -rf $(OBJDIR_RELEASE)
 
 .PHONY: before_debug after_debug clean_debug before_release after_release clean_release
 

@@ -27,24 +27,27 @@ void Monster::printStatus(){
 bool Monster::triggerEvent(Object* object){
     Player* player = dynamic_cast<Player*>(object);
     player -> triggerEvent(player);
-    cout << player -> getName() << ". You just encouter a monster." << endl;
+    cout << "Player " << player -> getName() << ", you just encouter a monster." << endl;
     printStatus();
     char choice;
     do {
-        if(choice == 'C' || choice == 'c'){
+        if(choice == 'S' || choice == 's'){
             player -> triggerEvent(player);
         }
-        cout << "What do you want to do? (A: RETREAT, B: ATTACK, C: STATUS): ";  
-    } while(cin >> choice && choice != 'a' && choice != 'A' && choice != 'B' && choice != 'b');
+        cout << "(R)ETREAT" << endl;
+        cout << "(A)TTACK" << endl;
+        cout << "(S)TATUS" << endl;
+        cout << "What do you want to do? ";  
+    } while(cin >> choice && choice != 'r' && choice != 'R' && choice != 'a' && choice != 'A');
     
-    if(choice == 'A' || choice == 'a'){
+    if(choice == 'R' || choice == 'r'){
         Room* tmp = player -> getCurrentRoom();
         player -> setCurrentRoom(player -> getPreviousRoom());
         player -> setPreviousRoom(tmp);
     } else {
         int player_dmg = calculateDamage(player->getAttack(), getDefense());
         int monster_dmg = calculateDamage(getAttack(), player->getDefense());
-        while(getCurrentHealth() > 0 && player -> getCurrentHealth()){
+        while(getCurrentHealth() > 0 && player -> getCurrentHealth() > 0){
             cout << "Player " << player -> getName() << " deals " << player_dmg
                 << " damages to Monster " << getName() << endl;
             setCurrentHealth(getCurrentHealth()-player_dmg);

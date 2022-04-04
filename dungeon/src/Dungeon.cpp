@@ -4,6 +4,11 @@ bool Dungeon::not_finished = true;
 
 Dungeon::Dungeon(){}
 
+void clear() {
+    // CSI[2J clears screen, CSI[H moves the cursor to top-left corner
+    std::cout << "\x1B[2J\x1B[H";
+}
+
 void Dungeon::createPlayer(){
     string name;
     cout << "Enter Your Name: ";
@@ -12,6 +17,7 @@ void Dungeon::createPlayer(){
     cout << "Hi, " << name << endl;
     player.triggerEvent(&player);
 }
+
 
 void Dungeon::createMap(){
     vector<Item> itemList;
@@ -82,9 +88,17 @@ void Dungeon::handleEvent(Object* object){
 void Dungeon::chooseAction(vector<Object*> objects){
     int idx = 0;
     for(int i=0;i<(int)objects.size();i++){
+        if(objects[i]->getTag() == "Monster"){
+            handleEvent(objects[i]);
+            return;
+        }
+    }
+    cout << "--------------------" << endl;
+    for(int i=0;i<(int)objects.size();i++){
         cout << idx ++ << ": " << objects[i]->getTag()
             << ": " << objects[i]->getName() << endl;
     }
+    cout << "--------------------" << endl;
     cout << "(M)ove" << endl;
     cout << "(S)how Status" << endl;
     char c;
@@ -96,6 +110,7 @@ void Dungeon::chooseAction(vector<Object*> objects){
     if(c == 'M' || c == 'm'){
         handleMovement();
     } else if(c == 'S' || c == 's'){
+        clear();
         player.triggerEvent(&player);
     } else {
         handleEvent(objects[c-'0']);
