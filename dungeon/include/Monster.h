@@ -12,6 +12,7 @@ using namespace std;
 class Monster: public GameCharacter
 {
 private:
+    bool isBoss;
 public:
     Monster();
     Monster(string,int,int,int);
@@ -20,6 +21,9 @@ public:
     /* In Monster, this function should deal with   */
     /* the combat system.                           */
     bool triggerEvent(Object*);
+    bool getIsBoss();
+    void setIsBoss(int);
+    void printStatus();
 };
 
 

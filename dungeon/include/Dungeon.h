@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 #include <exception>
+#include <map>
+#include <assert.h>
 #include "Player.h"
 #include "Monster.h"
 #include "NPC.h"
@@ -18,6 +20,7 @@ private:
     Player player;
     vector<Room> rooms;
 public:
+    static bool not_finished;
     Dungeon();
     /* Create a new player, and give him/her basic status */
     void createPlayer();

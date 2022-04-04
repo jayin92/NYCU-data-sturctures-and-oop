@@ -1,4 +1,4 @@
-#include "Item.h"
+#include "../include/Item.h"
 
 // TODO: triggerEvent
 
@@ -8,8 +8,12 @@ Item::Item(string name, int hp, int atk, int def):
     Object(name, "Item"), health(hp), attack(atk), defense(def)
 {}
 
-bool Item::triggerEvent(Object* obj){
+bool Item::triggerEvent(Object* object){
+    Player* player = dynamic_cast<Player*>(object);
+    cout << "You pick up " << getName() << endl;
+    player -> addItem(*this);
 
+    player -> triggerEvent(player);
 }
 
 int Item::getHealth(){
