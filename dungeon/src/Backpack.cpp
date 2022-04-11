@@ -1,12 +1,8 @@
 #include "../include/Backpack.h"
 
 Backpack::Backpack(): 
-    Object("backpack", "Backpack"), head(nullptr), left(nullptr), right(nullptr), body(nullptr)
-{
-    potions = vector<Item*>();
-    keys = vector<Item*>();
-}
-
+    Object("backpack", "Backpack"), head(nullptr), left(nullptr), right(nullptr), body(nullptr) {}
+    
 bool Backpack::triggerEvent(Object* obj){
     Player* player = dynamic_cast<Player*>(obj);
     auto head = player -> getBackpack() -> getHead();
@@ -31,6 +27,8 @@ bool Backpack::triggerEvent(Object* obj){
     for(auto i: player->getBackpack() -> getPoitions()){
         cout << idx ++ << ":" << i->getName() << endl;
     }
+
+    return true;
 }
 
 
@@ -55,7 +53,8 @@ vector<Item*> Backpack::getKeys(){
     return keys;
 }
 
-void Backpack::setHead(Player* player, Item* newHead){
+void Backpack::setHead(Object* obj, Item* newHead){
+    Player* player = dynamic_cast<Player*>(obj);
     vector<Item> inventory = player -> getInventory();
     player -> increaseStates(newHead->getHealth(), newHead->getAttack(), newHead->getDefense());
     for(auto it=inventory.begin();it!=inventory.end();it++){
@@ -72,7 +71,8 @@ void Backpack::setHead(Player* player, Item* newHead){
     player -> setInventory(inventory);
 }
 
-void Backpack::setLeft(Player* player, Item* newLeft){
+void Backpack::setLeft(Object* obj, Item* newLeft){
+    Player* player = dynamic_cast<Player*>(obj);
     vector<Item> inventory = player -> getInventory();
     player -> increaseStates(newLeft->getHealth(), newLeft->getAttack(), newLeft->getDefense());
     for(auto it=inventory.begin();it!=inventory.end();it++){
@@ -89,7 +89,8 @@ void Backpack::setLeft(Player* player, Item* newLeft){
     player -> setInventory(inventory);
 }
 
-void Backpack::setRight(Player* player, Item* newRight){
+void Backpack::setRight(Object* obj, Item* newRight){
+    Player* player = dynamic_cast<Player*>(obj);
     vector<Item> inventory = player -> getInventory();
     player -> increaseStates(newRight->getHealth(), newRight->getAttack(), newRight->getDefense());
     for(auto it=inventory.begin();it!=inventory.end();it++){
@@ -106,7 +107,8 @@ void Backpack::setRight(Player* player, Item* newRight){
     player -> setInventory(inventory);
 }
 
-void Backpack::setBody(Player* player, Item* newBody){
+void Backpack::setBody(Object* obj, Item* newBody){
+    Player* player = dynamic_cast<Player*>(obj);
     vector<Item> inventory = player -> getInventory();
     player -> increaseStates(newBody->getHealth(), newBody->getAttack(), newBody->getDefense());
     for(auto it=inventory.begin();it!=inventory.end();it++){

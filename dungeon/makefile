@@ -42,9 +42,9 @@ OBJDIR_RELEASE = obj\\Release
 DEP_RELEASE = 
 OUT_RELEASE = bin\\Release\\Dungeon.exe
 
-OBJ_DEBUG = $(OBJDIR_DEBUG)\\main.o $(OBJDIR_DEBUG)\\Room.o $(OBJDIR_DEBUG)\\Record.o $(OBJDIR_DEBUG)\\Player.o $(OBJDIR_DEBUG)\\Object.o $(OBJDIR_DEBUG)\\NPC.o $(OBJDIR_DEBUG)\\Monster.o $(OBJDIR_DEBUG)\\Item.o $(OBJDIR_DEBUG)\\GameCharacter.o $(OBJDIR_DEBUG)\\Dungeon.o
+OBJ_DEBUG = $(OBJDIR_DEBUG)\\main.o $(OBJDIR_DEBUG)\\Room.o $(OBJDIR_DEBUG)\\Record.o $(OBJDIR_DEBUG)\\Player.o $(OBJDIR_DEBUG)\\Object.o $(OBJDIR_DEBUG)\\NPC.o $(OBJDIR_DEBUG)\\Monster.o $(OBJDIR_DEBUG)\\Item.o $(OBJDIR_DEBUG)\\GameCharacter.o $(OBJDIR_DEBUG)\\Dungeon.o $(OBJDIR_DEBUG)\\Backpack.o
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)\\main.o $(OBJDIR_RELEASE)\\Room.o $(OBJDIR_RELEASE)\\Record.o $(OBJDIR_RELEASE)\\Player.o $(OBJDIR_RELEASE)\\Object.o $(OBJDIR_RELEASE)\\NPC.o $(OBJDIR_RELEASE)\\Monster.o $(OBJDIR_RELEASE)\\Item.o $(OBJDIR_RELEASE)\\GameCharacter.o $(OBJDIR_RELEASE)\\Dungeon.o
+OBJ_RELEASE = $(OBJDIR_RELEASE)\\main.o $(OBJDIR_RELEASE)\\Room.o $(OBJDIR_RELEASE)\\Record.o $(OBJDIR_RELEASE)\\Player.o $(OBJDIR_RELEASE)\\Object.o $(OBJDIR_RELEASE)\\NPC.o $(OBJDIR_RELEASE)\\Monster.o $(OBJDIR_RELEASE)\\Item.o $(OBJDIR_RELEASE)\\GameCharacter.o $(OBJDIR_RELEASE)\\Dungeon.o $(OBJDIR_DEBUG)\\Backpack.o
 
 all: debug release
 
@@ -70,6 +70,9 @@ $(OBJDIR_DEBUG)\\Room.o: $(SRC)\\Room.cpp
 $(OBJDIR_DEBUG)\\Record.o: $(SRC)\\Record.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)\\Record.cpp -o $(OBJDIR_DEBUG)\\Record.o
 
+$(OBJDIR_DEBUG)\\Backpack.o: $(SRC)\\Backpack.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)\\Backpack.cpp -o $(OBJDIR_DEBUG)\\Backpack.o
+	
 $(OBJDIR_DEBUG)\\Player.o: $(SRC)\\Player.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)\\Player.cpp -o $(OBJDIR_DEBUG)\\Player.o
 
@@ -90,6 +93,9 @@ $(OBJDIR_DEBUG)\\GameCharacter.o: $(SRC)\\GameCharacter.cpp
 
 $(OBJDIR_DEBUG)\\Dungeon.o: $(SRC)\\Dungeon.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)\\Dungeon.cpp -o $(OBJDIR_DEBUG)\\Dungeon.o
+
+$(OBJDIR_DEBUG)\\Backpack.o: $(SRC)\\Backpack.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c $(SRC)\\Backpack.cpp -o $(OBJDIR_DEBUG)\\Backpack.o
 
 clean_debug: 
 	cmd /c del /f $(OBJ_DEBUG) $(OUT_DEBUG)
@@ -136,6 +142,9 @@ $(OBJDIR_RELEASE)\\GameCharacter.o: $(SRC)\\GameCharacter.cpp
 
 $(OBJDIR_RELEASE)\\Dungeon.o: $(SRC)\\Dungeon.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)\\Dungeon.cpp -o $(OBJDIR_RELEASE)\\Dungeon.o
+
+$(OBJDIR_RELEASE)\\Backpack.o: $(SRC)\\Backpack.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c $(SRC)\\Backpack.cpp -o $(OBJDIR_RELEASE)\\Backpack.o
 
 clean_release: 
 	cmd /c del /f $(OBJ_RELEASE) $(OUT_RELEASE)

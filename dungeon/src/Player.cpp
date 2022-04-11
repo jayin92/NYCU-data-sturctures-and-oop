@@ -64,3 +64,6 @@ vector<Item> Player::getInventory(){
     return inventory;
 }
 
+Backpack* Player::getBackpack(){
+    return backpack;
+}

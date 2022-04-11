@@ -10,7 +10,6 @@
 using namespace std;
 
 class Item;
-class Player;
 
 class Backpack: public Object
 {
@@ -34,10 +33,10 @@ public:
     vector<Item*> getPoitions();
     vector<Item*> getKeys();
 
-    void setHead(Player*, Item*);
-    void setLeft(Player*, Item*);
-    void setRight(Player*, Item*);
-    void setBody(Player*, Item*);
+    void setHead(Object*, Item*);
+    void setLeft(Object*, Item*);
+    void setRight(Object*, Item*);
+    void setBody(Object*, Item*);
     void addKey(Item*);
     void addPotions(Item*);
 };
