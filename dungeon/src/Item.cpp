@@ -4,16 +4,18 @@
 
 Item::Item(): Object("", "Item"), health(0), attack(0), defense(0){}
 
-Item::Item(string name, int hp, int atk, int def):
-    Object(name, "Item"), health(hp), attack(atk), defense(def)
+Item::Item(string name, string ty, int hp, int atk, int def):
+    Object(name, "Item"), type(ty), health(hp), attack(atk), defense(def)
 {}
 
 bool Item::triggerEvent(Object* object){
     Player* player = dynamic_cast<Player*>(object);
-    cout << "You pick up " << getName() << endl;
+    cout << "You get " << getName() << endl;
     player -> addItem(*this);
 
     player -> triggerEvent(player);
+
+    return true;
 }
 
 int Item::getHealth(){

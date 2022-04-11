@@ -8,15 +8,14 @@
 #include "Player.h"
 using namespace std;
 
-class Player;
-
 class Item: public Object
 {
 private:
-    int health,attack,defense;
+    string type;
+    int health, attack, defense;
 public:
     Item();
-    Item(string, int, int, int);
+    Item(string, string, int, int, int);
 
     /* Virtual function that you need to complete    */
     /* In Item, this function should deal with the   */

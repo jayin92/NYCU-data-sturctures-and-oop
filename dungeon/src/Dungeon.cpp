@@ -21,7 +21,7 @@ void Dungeon::createPlayer(){
 
 void Dungeon::createMap(){
     vector<Item> itemList;
-    itemList.push_back(Item("INF", 0, 1e3, 1e3));
+    itemList.push_back(Item("INF", "equip", 0, 1000, 1000));
     NPC* jay = new NPC("jayinnn", "I'm jayinnn, the author of this game.", itemList);
     Monster* ethan = new Monster("Ethan", 300, 75, 80);
     ethan -> setIsBoss(false);

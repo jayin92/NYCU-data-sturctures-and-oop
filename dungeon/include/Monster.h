@@ -1,5 +1,5 @@
-#ifndef ENEMY_H_INCLUDED
-#define ENEMY_H_INCLUDED
+#ifndef MONSTER_H_INCLUDED
+#define MONSTER_H_INCLUDED
 
 #include <iostream>
 #include <string>

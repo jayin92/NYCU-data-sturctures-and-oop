@@ -1,9 +1,9 @@
 #include "../include/Monster.h"
 
-Monster::Monster(): GameCharacter("", "Monster", 0, 0, 0) {}
+Monster::Monster(): GameCharacter("", "Monster", 0, 0, 0), isBoss(false) {}
 
 Monster::Monster(string name, int hp, int atk, int def):
-    GameCharacter(name, "Monster", hp, atk, def) {}
+    GameCharacter(name, "Monster", hp, atk, def), isBoss(false) {}
 
 int calculateDamage(int atk, int def){
     return atk * atk / (atk + def);
@@ -29,7 +29,7 @@ bool Monster::triggerEvent(Object* object){
     player -> triggerEvent(player);
     cout << "Player " << player -> getName() << ", you just encouter a monster." << endl;
     printStatus();
-    char choice;
+    char choice = 'Z';
     do {
         if(choice == 'S' || choice == 's'){
             player -> triggerEvent(player);
