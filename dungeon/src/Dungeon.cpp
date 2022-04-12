@@ -21,7 +21,8 @@ void Dungeon::createPlayer(){
 
 void Dungeon::createMap(){
     vector<Item> itemList;
-    itemList.push_back(Item("INF", "equip", 0, 1000, 1000));
+    itemList.push_back(Item("A demo key", "key", 0, 1000, 1000));
+    itemList.push_back(Item("A demo potion", "potion", 0, 1000, 1000));
     NPC* jay = new NPC("jayinnn", "I'm jayinnn, the author of this game.", itemList);
     Monster* ethan = new Monster("Ethan", 300, 75, 80);
     ethan -> setIsBoss(false);
@@ -110,7 +111,6 @@ void Dungeon::chooseAction(vector<Object*> objects){
     if(c == 'M' || c == 'm'){
         handleMovement();
     } else if(c == 'S' || c == 's'){
-        clear();
         player.triggerEvent(&player);
     } else {
         handleEvent(objects[c-'0']);

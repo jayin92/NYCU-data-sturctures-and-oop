@@ -7,12 +7,10 @@
 #include "GameCharacter.h"
 #include "Room.h"
 #include "Item.h"
-#include "Backpack.h"
 
 using namespace std;
 
 class Item;
-class Backpack;
 
 class Player: public GameCharacter
 {
@@ -20,7 +18,13 @@ private:
     Room* currentRoom = nullptr;
     Room* previousRoom = nullptr;
     vector<Item> inventory;
-    Backpack* backpack;
+    Item* head = nullptr;
+    Item* left = nullptr;
+    Item* right = nullptr;
+    Item* body = nullptr;
+    vector<Item> potions;
+    vector<Item> keys;
+    static Item placeholder;
 public:
     Player();
     Player(string,int,int,int);
@@ -39,8 +43,23 @@ public:
     void setInventory(vector<Item>);
     Room* getCurrentRoom();
     Room* getPreviousRoom();
+
     vector<Item> getInventory();
-    Backpack* getBackpack();
+    Item* getHead();
+    Item* getLeft();
+    Item* getRight();
+    Item* getBody();
+    vector<Item> getPoitions();
+    vector<Item> getKeys();
+
+    void setHead(Item*);
+    void setLeft(Item*);
+    void setRight(Item*);
+    void setBody(Item*);
+    void addKey(Item);
+    void addPotions(Item);
+
+    void equip();
 };
 
 #endif // PLAYER_H_INCLUDED

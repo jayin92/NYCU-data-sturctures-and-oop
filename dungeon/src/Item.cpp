@@ -12,9 +12,6 @@ bool Item::triggerEvent(Object* object){
     Player* player = dynamic_cast<Player*>(object);
     cout << "You get " << getName() << endl;
     player -> addItem(*this);
-
-    player -> triggerEvent(player);
-
     return true;
 }
 
@@ -28,6 +25,10 @@ int Item::getAttack(){
 
 int Item::getDefense(){
     return this -> defense;
+}
+
+string Item::getType(){
+    return type;
 }
 
 void Item::setHealth(int hp){

@@ -9,6 +9,8 @@
 
 using namespace std;
 
+class Player;
+
 class Item: public Object
 {
 private:
@@ -28,6 +30,7 @@ public:
     int getHealth();
     int getAttack();
     int getDefense();
+    string getType();
     void setHealth(int);
     void setAttack(int);
     void setDefense(int);

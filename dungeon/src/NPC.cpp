@@ -18,13 +18,13 @@ bool NPC::triggerEvent(Object* object){
     
     int idx = -1;
     do{
-        cout << "I have these items. Do you want to buy anything?" << endl;
-        listCommodity();
-        cout << "Enter the index of wanted item (Enter -1 for quitting): ";
         if(0 <= idx && idx < (int)commodity.size()){
             commodity[idx].triggerEvent(player);
             commodity.erase(commodity.begin()+idx);
         }
+        cout << "I have these items. Do you want to buy anything?" << endl;
+        listCommodity();
+        cout << "Enter the index of wanted item (Enter -1 for quitting): ";
     } while(cin >> idx && idx != -1);
 
     return true;
