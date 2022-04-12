@@ -23,6 +23,10 @@ void Dungeon::createMap(){
     vector<Item> itemList;
     itemList.push_back(Item("A demo key", "key", 0, 1000, 1000));
     itemList.push_back(Item("A demo potion", "potion", 0, 1000, 1000));
+    itemList.push_back(Item("A demo head", "head", 0, 200, 300));
+    itemList.push_back(Item("A demo left", "left", 0, 100, 0));
+    itemList.push_back(Item("A demo right", "right", 0, 50, 250));
+    itemList.push_back(Item("A demo body", "body", 0, 0, 1000));
     NPC* jay = new NPC("jayinnn", "I'm jayinnn, the author of this game.", itemList);
     Monster* ethan = new Monster("Ethan", 300, 75, 80);
     ethan -> setIsBoss(false);
@@ -102,16 +106,19 @@ void Dungeon::chooseAction(vector<Object*> objects){
     cout << "--------------------" << endl;
     cout << "(M)ove" << endl;
     cout << "(S)how Status" << endl;
+    cout << "(E)quipment" << endl;
     char c;
     do{
         cout << "Enter the index of the charcter you want to interact: ";
     } while(cin >> c && !(('0' <= c && c <= '0'+(int)objects.size())
-        || c == 'M' || c == 'm' || c == 'S' || c == 's'));
+        || c == 'M' || c == 'm' || c == 'S' || c == 's' || c == 'E' || c == 'e'));
 
     if(c == 'M' || c == 'm'){
         handleMovement();
     } else if(c == 'S' || c == 's'){
         player.triggerEvent(&player);
+    } else if(c == 'E' || c == 'e'){
+        player.equip();
     } else {
         handleEvent(objects[c-'0']);
     }
