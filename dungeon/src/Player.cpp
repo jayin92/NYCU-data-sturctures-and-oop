@@ -18,18 +18,32 @@ void Player::addItem(Item new_item){
 }
 
 void Player::increaseStates(int hp, int atk, int def){
-    setCurrentHealth(getCurrentHealth() + hp);
+    setCurrentHealth(min(getCurrentHealth() + hp, getMaxHealth()));
     setAttack(getAttack() + atk);
     setDefense(getDefense() + def);
 }
 
 void Player::changeRoom(Room* new_room){
+    if(new_room->getRoomKey() != nullptr){
+        bool flag = true;
+        for(auto it=keys.begin(); it!=keys.end(); it++){
+            if(it -> getName() == new_room->getRoomKey()->getName()){
+                cout << "You have the key to enter this room." << endl;
+                flag = false;
+                break;
+            }
+        }
+        if(flag){
+            cout << "You need key " + new_room->getRoomKey()->getName() + " to enter this room." << endl;
+            return;
+        }
+    }
     previousRoom = currentRoom;
     currentRoom = new_room;
 }
 
 bool Player::triggerEvent(Object*){
-    cout << "Status:" << endl;
+    cout << "------------------ STATUS ------------------" << endl;
 
     cout << getName() << endl;
     cout << "HP: "  << getCurrentHealth() << "/" << getMaxHealth() << endl;
@@ -39,7 +53,7 @@ bool Player::triggerEvent(Object*){
     if(inve.size() != 0){
         cout << "Item: ";
         for(auto i: inve){
-            cout << i.getName() << " ";
+            cout << i.getName() << ", ";
         }
         cout << endl;
     }
@@ -60,7 +74,7 @@ bool Player::triggerEvent(Object*){
     for(Item i: potions){
         cout << idx ++ << ": " << i.getName() << " ATK: " << i.getAttack() << " HP: " << i.getHealth() << endl;
     }
-
+    cout << "--------------------------------------------" << endl;
     return true;
 }
 
@@ -100,7 +114,7 @@ Item* Player::getBody(){
     return body;
 }
 
-vector<Item> Player::getPoitions(){
+vector<Item> Player::getPotions(){
     return potions;
 }
 
@@ -282,22 +296,26 @@ void Player::equip(){
         }
     
     }
-    
-    // vector<Item> heads;
-    // vector<Item> lefts;
-    // vector<Item> rights;
-    // vector<Item> bodys;
-    // for(Item i: inventory){
-    //     if(i.getType() == "head") heads.push_back(i);
-    //     else if(i.getType() == "left") lefts.push_back(i);
-    //     else if(i.getType() == "right") rights.push_back(i);
-    //     else if(i.getType() == "body") bodys.push_back(i);
-    // }
-    // cout << "Inventory: " << endl;
-    // cout << "Head: " << endl;
-    // for(auto i: heads){
-    //     cout << head->getName() + " ATK: " + to_string(head->getAttack()) + " DEF: " + to_string(head->getDefense()) << endl;
-    // }
-    
+}
 
+void Player::popKey(Item key){
+    for(auto it=keys.begin(); it!=keys.end(); ++it){
+        if(key.getName() == it->getName()){
+            keys.erase(it);
+            break;
+        }
+    }
+}
+
+void Player::popPotions(Item potion){
+    for(auto it=potions.begin(); it!=potions.end(); ++it){
+        if(potion.getName() == it->getName()){
+            potions.erase(it);
+            break;
+        }
+    }
+}
+
+void Player::useHealPotion(Item potion){
+    increaseStates(potion.getHealth(), 0, 0);
 }

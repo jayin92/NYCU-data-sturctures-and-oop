@@ -8,6 +8,8 @@
 
 using namespace std;
 
+class Item;
+
 class Room
 {
 private:
@@ -15,6 +17,7 @@ private:
     Room* downRoom = nullptr;
     Room* leftRoom = nullptr;
     Room* rightRoom = nullptr;
+    Item* roomKey = nullptr;
     bool isExit;
     int index;
     vector<Object*> objects; /*contain 1 or multiple objects, including monster, npc, etc*/
@@ -28,6 +31,7 @@ public:
     void setDownRoom(Room*);
     void setLeftRoom(Room*);
     void setRightRoom(Room*);
+    void setRoomKey(Item*);
     void setIsExit(bool);
     void setIndex(int);
     void setObjects(vector<Object*>);
@@ -38,6 +42,7 @@ public:
     Room* getDownRoom();
     Room* getLeftRoom();
     Room* getRightRoom();
+    Item* getRoomKey();
 };
 
 #endif // ROOM_H_INCLUDED

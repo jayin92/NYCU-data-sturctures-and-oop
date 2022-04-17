@@ -21,8 +21,9 @@ void Dungeon::createPlayer(){
 
 void Dungeon::createMap(){
     vector<Item> itemList;
-    itemList.push_back(Item("A demo key", "key", 0, 1000, 1000));
+    itemList.push_back(Item("A demo key", "key", 0, 0, 0));
     itemList.push_back(Item("A demo potion", "potion", 0, 1000, 1000));
+    itemList.push_back(Item("A demo heal potion", "potion", 50, 1000, 1000));
     itemList.push_back(Item("A demo head", "head", 0, 200, 300));
     itemList.push_back(Item("A demo left", "left", 0, 100, 0));
     itemList.push_back(Item("A demo right", "right", 0, 50, 250));
@@ -39,6 +40,7 @@ void Dungeon::createMap(){
     player.setCurrentRoom(initRoom);
     initRoom -> setRightRoom(Room1);
     Room1 -> setLeftRoom(initRoom);
+    Room1 -> setRoomKey(new Item("A demo key", "key", 0, 0, 0));
     rooms.push_back(*initRoom);
     rooms.push_back(*Room1);
 }
@@ -70,10 +72,7 @@ void Dungeon::handleMovement(){
         do{
             cout << "Which room do you want to go? ";
         } while(cin >> c && (avaRoom.find(c) == avaRoom.end()));
-        Room* cur = player.getCurrentRoom();
-        cout << avaRoom[c]->getIndex() << endl;
-        player.setCurrentRoom(avaRoom[c]);
-        player.setPreviousRoom(cur);
+        player.changeRoom(avaRoom[c]);
     } else {
         cout << "Sorry, you can't go anywhere." << endl;
     }
@@ -98,32 +97,49 @@ void Dungeon::chooseAction(vector<Object*> objects){
             return;
         }
     }
-    cout << "--------------------" << endl;
+    cout << "------------------- ROOM -------------------" << endl;
     for(int i=0;i<(int)objects.size();i++){
         cout << idx ++ << ": " << objects[i]->getTag()
             << ": " << objects[i]->getName() << endl;
     }
-    cout << "--------------------" << endl;
+    cout << "--------------------------------------------" << endl;
     cout << "(M)ove" << endl;
     cout << "(S)how Status" << endl;
     cout << "(E)quipment" << endl;
+    cout << "(P)otions" << endl;
     char c;
     do{
         cout << "Enter the index of the charcter you want to interact: ";
     } while(cin >> c && !(('0' <= c && c <= '0'+(int)objects.size())
-        || c == 'M' || c == 'm' || c == 'S' || c == 's' || c == 'E' || c == 'e'));
-
+        || c == 'M' || c == 'm' || c == 'S' || c == 's' || c == 'E' || c == 'e' || c == 'P' || c == 'p'));
+    clear();
     if(c == 'M' || c == 'm'){
         handleMovement();
     } else if(c == 'S' || c == 's'){
         player.triggerEvent(&player);
     } else if(c == 'E' || c == 'e'){
         player.equip();
+    } else if(c == 'P' || c == 'p') {
+        int inp = -2;
+        do {
+            int sz = player.getPotions().size();
+            if(0 <= inp && inp < sz){
+                player.useHealPotion(player.getPotions()[inp]);
+                player.popPotions(player.getPotions()[inp]);
+            }
+            int idx = 0;
+            for(auto i: player.getPotions()){
+                if(i.getHealth() != 0){
+                    cout << idx << ": " << i.getName() << " HP: " << i.getHealth() << endl;
+                }
+                idx ++;
+            }
+            cout << "Which potions you want to use (-1 for quit) > ";
+        } while(cin >> inp && inp != -1);
     } else {
         handleEvent(objects[c-'0']);
     }
 }
-
 
 
 void Dungeon::startGame(){

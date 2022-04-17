@@ -49,7 +49,7 @@ public:
     Item* getLeft();
     Item* getRight();
     Item* getBody();
-    vector<Item> getPoitions();
+    vector<Item> getPotions();
     vector<Item> getKeys();
 
     void setHead(Item*);
@@ -58,7 +58,9 @@ public:
     void setBody(Item*);
     void addKey(Item);
     void addPotions(Item);
-
+    void popKey(Item);
+    void useHealPotion(Item);
+    void popPotions(Item);
     void equip();
 };
 

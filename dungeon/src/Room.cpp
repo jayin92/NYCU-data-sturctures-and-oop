@@ -38,6 +38,10 @@ void Room::setIndex(int idx){
     this -> index = idx;
 }
 
+void Room::setRoomKey(Item* key){
+    this -> roomKey = key;
+}
+
 vector<Object*> Room::getObjects(){
     return objects;
 }
@@ -64,4 +68,8 @@ bool Room::getIsExit(){
 
 int Room::getIndex(){
     return index;
+}
+
+Item* Room::getRoomKey(){
+    return this -> roomKey;
 }
