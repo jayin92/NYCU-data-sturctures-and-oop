@@ -13,7 +13,6 @@ void NPC::listCommodity(){
 
 bool NPC::triggerEvent(Object* object){
     Player* player = dynamic_cast<Player*>(object);
-    cout << "Hi, I'm " << getName() << "." << endl;
     cout << getScript() << endl;
     
     int idx = -1;

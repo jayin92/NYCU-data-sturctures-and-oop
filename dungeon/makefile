@@ -23,7 +23,7 @@ EXE			:= $(BDIR)\\$(PROGRAM)
 SRCS		:= $(wildcard $(SDIR)/*.cpp)
 OBJS		:= $(SRCS:$(SDIR)/%.cpp=$(ODIR)\\%.o)
 
-all: run
+all: clean run
 
 run: $(EXE)
 	$<
