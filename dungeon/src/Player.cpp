@@ -1,4 +1,9 @@
 #include "../include/Player.h"
+#define NC "\e[0m"
+#define RED "\e[0;31m"
+#define GRN "\e[0;32m"
+#define CYN "\e[0;36m"
+#define REDB "\e[41m"
 
 Player::Player(){}
 
@@ -34,7 +39,7 @@ void Player::changeRoom(Room* new_room){
             }
         }
         if(flag){
-            cout << "You need key " + new_room->getRoomKey()->getName() + " to enter this room." << endl;
+            cout << RED << "You need key " + new_room->getRoomKey()->getName() + " to enter this room." << NC << endl;
             return;
         }
     }
@@ -53,7 +58,7 @@ bool Player::triggerEvent(Object*){
     if(inve.size() != 0){
         cout << "Item: ";
         for(auto i: inve){
-            cout << i.getName() << ", ";
+            cout << CYN+i.getType()+NC << " " << i.getName() << ", ";
         }
         cout << endl;
     }

@@ -46,6 +46,10 @@ vector<Object*> Room::getObjects(){
     return objects;
 }
 
+void Room::addObject(Object* obj){
+    objects.push_back(obj);
+}
+
 Room* Room::getUpRoom(){
     return upRoom;
 }
@@ -67,7 +71,7 @@ bool Room::getIsExit(){
 }
 
 int Room::getIndex(){
-    return index;
+    return this->index;
 }
 
 Item* Room::getRoomKey(){

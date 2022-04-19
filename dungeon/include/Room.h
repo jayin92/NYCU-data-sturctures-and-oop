@@ -26,6 +26,7 @@ public:
     Room(bool, int, vector<Object*>);
     bool popObject(Object*); /*pop out the specific object, used when the interaction is done*/
 
+
     /* Set & Get function*/
     void setUpRoom(Room*);
     void setDownRoom(Room*);
@@ -35,6 +36,7 @@ public:
     void setIsExit(bool);
     void setIndex(int);
     void setObjects(vector<Object*>);
+    void addObject(Object*);
     bool getIsExit();
     int getIndex();
     vector<Object*> getObjects();

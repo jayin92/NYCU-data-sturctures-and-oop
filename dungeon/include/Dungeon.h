@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iomanip>
 #include <exception>
 #include <map>
 #include <assert.h>
@@ -18,7 +19,7 @@ using namespace std;
 class Dungeon{
 private:
     Player player;
-    vector<Room> rooms;
+    vector<Room*> rooms;
 public:
     static bool not_finished;
     Dungeon();

@@ -23,7 +23,7 @@ EXE			:= $(BDIR)\\$(PROGRAM)
 SRCS		:= $(wildcard $(SDIR)/*.cpp)
 OBJS		:= $(SRCS:$(SDIR)/%.cpp=$(ODIR)\\%.o)
 
-all: clean run
+all: run
 
 run: $(EXE)
 	$<
@@ -35,8 +35,8 @@ $(ODIR)\\%.o: $(SDIR)\\%.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -MP -MMD -c $< -o $@
 
 dirs:
-	@mkdir $(BDIR)
-	@mkdir $(ODIR)
+	@-mkdir $(BDIR)
+	@-mkdir $(ODIR)
 
 clean:
 	$(RM) -r obj bin

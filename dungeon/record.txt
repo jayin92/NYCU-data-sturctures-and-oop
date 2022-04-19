@@ -1,0 +1,312 @@
+17
+0
+0
+null
+1
+2
+3
+4
+1
+npc
+The Professor
+Hi, I'm the Professor from NYCU CS
+Welcome you to enter this dungeon.
+To escape this dungeon, you need to beat a monster called GPE.
+Here is the student ID card, this card is really helpful.
+Don't forget to pick it up.
+
+-
+0
+1
+0
+null
+5
+0
+null
+null
+0
+2
+0
+Ewant Account
+0
+null
+null
+null
+0
+3
+0
+null
+null
+null
+null
+0
+0
+4
+0
+NYCU Student ID Card
+10
+9
+0
+11
+0
+5
+0
+null
+8
+1
+6
+7
+1
+npc
+Professor Chung
+Hi, I'm Professor Chung.
+Seems like you have killed the Monster Calculus.
+My OCW is really good, huh.
+Hope you can run away from this dungeon.
+
+-
+0
+6
+0
+null
+null
+null
+null
+5
+1
+npc
+Gilbert Strang
+Hi, I'm Gilbert Strang.
+The author of a well-known textbook. To help you beat the Monster Linear Algebra, I have something to give you.
+
+-
+0
+7
+0
+Schrodinger Equation
+null
+null
+5
+null
+0
+8
+0
+null
+null
+5
+null
+null
+1
+npc
+Professor Lee
+Hi, I'm Professor Lee.
+The professor of General Physics. You said that you can't enter the room of physics.
+Here is the key to that room.
+Go and kill Monster Physics.
+
+-
+0
+9
+0
+Turing Machine
+4
+null
+null
+null
+2
+monster
+Introduction to Algorithms
+50
+50
+40
+40
+item
+DP
+head
+0
+5
+10
+10
+0
+null
+null
+4
+null
+null
+0
+11
+0
+null
+12
+13
+4
+16
+0
+12
+0
+K-map
+null
+11
+null
+null
+2
+npc
+Alan Turing
+Hi, I'm Alan Turing.
+The famous computer scientist. To help you beat the Monster Introduction to Algorithms, I have something to give you.
+
+-
+1
+Turing Machine
+key
+0
+0
+0
+item
+Heal Potion
+potion
+10
+0
+0
+13
+0
+null
+11
+14
+null
+15
+1
+npc
+George Boole
+Hi, I'm George Boole.
+The pioneer in Boolean Algebra. I have something to give you.
+
+-
+1
+Boolean Algebra
+key
+0
+0
+0
+14
+0
+Boolean Algebra
+13
+null
+null
+null
+2
+monster
+Discrete Mathematics
+20
+20
+5
+5
+item
+Binary Tree
+body
+0
+0
+15
+15
+0
+null
+null
+null
+13
+null
+2
+monster
+Digital Circuits Design
+25
+25
+10
+10
+item
+K-map
+key
+0
+0
+0
+16
+1
+Treap
+null
+null
+11
+null
+0
+jayinnn
+100
+100
+10055
+10050
+11
+16
+1
+Gram-schmidt Method
+right
+0
+10
+10
+null
+body
+SVD
+body
+0
+5
+10
+left
+STL
+left
+0
+5
+20
+right
+Pointer
+right
+0
+20
+5
+4
+Heal Potion
+potion
+10
+0
+0
+Damage Potion
+potion
+0
+5
+0
+Damage Potion
+potion
+0
+5
+0
+Heal Potion
+potion
+10
+0
+0
+4
+NYCU Student ID Card
+key
+0
+0
+0
+Ewant Account
+key
+0
+0
+0
+Schrodinger Equation
+key
+0
+0
+0
+Treap
+key
+0
+0
+0

@@ -34,6 +34,7 @@ public:
     void setHealth(int);
     void setAttack(int);
     void setDefense(int);
+    void setType(string);
 };
 
 #endif // ITEM_H_INCLUDED

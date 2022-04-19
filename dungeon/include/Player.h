@@ -24,7 +24,6 @@ private:
     Item* body = nullptr;
     vector<Item> potions;
     vector<Item> keys;
-    static Item placeholder;
 public:
     Player();
     Player(string,int,int,int);

@@ -1,8 +1,16 @@
 #include "../include/Dungeon.h"
+#define NC "\e[0m"
+#define RED "\e[0;31m"
+#define GRN "\e[0;32m"
+#define CYN "\e[0;36m"
+#define REDB "\e[41m"
+
 
 bool Dungeon::not_finished = true;
 
 Dungeon::Dungeon(){}
+Record record;
+
 
 void clear() {
     // CSI[2J clears screen, CSI[H moves the cursor to top-left corner
@@ -10,10 +18,18 @@ void clear() {
 }
 
 void Dungeon::createPlayer(){
+    string s = "    ____                                   \n"
+               "   / __ \\__  ______  ____ ____  ____  ____ \n"
+               "  / / / / / / / __ \\/ __ `/ _ \\/ __ \\/ __ \\\n"
+               " / /_/ / /_/ / / / / /_/ /  __/ /_/ / / / /\n"
+               "/_____/\\__,_/_/ /_/\\__, /\\___/\\____/_/ /_/ \n"
+               "                  /____/                   \n";
+
+    cout << s;
     string name;
     cout << "Enter Your Name: ";
     cin >> name;
-    player = Player(name, 100, 10, 0);
+    player = Player(name, 100, 10000, 10000);
     cout << "Hi, " << name << endl;
     player.triggerEvent(&player);
 }
@@ -124,23 +140,23 @@ void Dungeon::createMap(){
 
     dcdRoom->setLeftRoom(georgeBooleRoom);
 
-    rooms.push_back(*initRoom);
-    rooms.push_back(*calculusRoom);
-    rooms.push_back(*physicsRoom);
-    rooms.push_back(*LARoom);
-    rooms.push_back(*intro2comRoom);
-    rooms.push_back(*pfChungRoom);
-    rooms.push_back(*gilbertStrangRoom);
-    rooms.push_back(*differentialEquationsRoom);
-    rooms.push_back(*pfLeeRoom);
-    rooms.push_back(*intro2algoRoom);
-    rooms.push_back(*dataStructuresRoom);
-    rooms.push_back(*oopRoom);
-    rooms.push_back(*turingRoom);
-    rooms.push_back(*georgeBooleRoom);
-    rooms.push_back(*dmRoom);
-    rooms.push_back(*dcdRoom);
-    rooms.push_back(*gpeRoom);
+    rooms.push_back(initRoom);
+    rooms.push_back(calculusRoom);
+    rooms.push_back(physicsRoom);
+    rooms.push_back(LARoom);
+    rooms.push_back(intro2comRoom);
+    rooms.push_back(pfChungRoom);
+    rooms.push_back(gilbertStrangRoom);
+    rooms.push_back(differentialEquationsRoom);
+    rooms.push_back(pfLeeRoom);
+    rooms.push_back(intro2algoRoom);
+    rooms.push_back(dataStructuresRoom);
+    rooms.push_back(oopRoom);
+    rooms.push_back(turingRoom);
+    rooms.push_back(georgeBooleRoom);
+    rooms.push_back(dmRoom);
+    rooms.push_back(dcdRoom);
+    rooms.push_back(gpeRoom);
 
     player.setCurrentRoom(initRoom);
 }
@@ -168,11 +184,19 @@ void Dungeon::handleMovement(){
             avaRoom['R'] = avaRoom['r'] = player.getCurrentRoom() -> getRightRoom();
             cout << "(R)ight Room" << endl;
         }
+        if(player.getCurrentRoom() -> getIsExit() == true){
+            cout << "(E)xit" << endl;
+        }
         char c;
         do{
             cout << "Which room do you want to go? ";
-        } while(cin >> c && (avaRoom.find(c) == avaRoom.end()));
-        player.changeRoom(avaRoom[c]);
+        } while(cin >> c && (avaRoom.find(c) == avaRoom.end() && c != 'E' && c != 'e'));
+        if(c == 'E' || c == 'e'){
+            cout << GRN << "Congratulations! Player " << player.getName() << ", you have exited the dungeon." << NC << endl;
+            exit(0);
+        } else {
+            player.changeRoom(avaRoom[c]);
+        }
     } else {
         cout << "Sorry, you can't go anywhere." << endl;
     }
@@ -199,19 +223,22 @@ void Dungeon::chooseAction(vector<Object*> objects){
     }
     cout << "------------------- ROOM -------------------" << endl;
     for(int i=0;i<(int)objects.size();i++){
-        cout << idx ++ << ": " << objects[i]->getTag()
-            << ": " << objects[i]->getName() << endl;
+        cout << idx ++ << ": " << CYN+(objects[i]->getTag() == "Item" ? dynamic_cast<Item*>(objects[i])->getType() : objects[i]->getTag())+NC << 
+        " " << objects[i]->getName() << endl;
     }
     cout << "--------------------------------------------" << endl;
     cout << "(M)ove" << endl;
     cout << "(S)how Status" << endl;
     cout << "(E)quipment" << endl;
     cout << "(P)otions" << endl;
+    cout << "(C)reate Record" << endl;
+    cout << "(L)oad Record" << endl;
+    cout << "(Q)uit" << endl;
     char c;
     do{
         cout << "Enter the index of the charcter you want to interact: ";
     } while(cin >> c && !(('0' <= c && c < '0'+(int)objects.size())
-        || c == 'M' || c == 'm' || c == 'S' || c == 's' || c == 'E' || c == 'e' || c == 'P' || c == 'p'));
+        || c == 'M' || c == 'm' || c == 'S' || c == 's' || c == 'E' || c == 'e' || c == 'P' || c == 'p' || c == 'C' || c == 'c' || c == 'L' || c == 'l' || c == 'Q' || c == 'q'));
     clear();
     if(c == 'M' || c == 'm'){
         handleMovement();
@@ -236,6 +263,12 @@ void Dungeon::chooseAction(vector<Object*> objects){
             }
             cout << "Which potions you want to use (-1 for quit) > ";
         } while(cin >> inp && inp != -1);
+    } else if(c == 'C' || c == 'c'){
+        record.saveToFile(&player, rooms);
+    } else if(c == 'L' || c == 'l') {
+        record.loadFromFile(&player, rooms);
+    } else if(c == 'Q' || c == 'q'){
+        exit(0);
     } else {
         handleEvent(objects[c-'0']);
         if(objects[c-'0']->getTag()=="Item"){

@@ -21,14 +21,22 @@ class Record
 {
 private:
     void savePlayer(Player*, ofstream&);
-    void saveRooms(vector<Room>&, ofstream&);
-    void loadPlayer(Player*, ifstream&);
-    void loadRooms(vector<Room>&, ifstream&);
+    void saveRooms(vector<Room*>&, ofstream&);
+    void saveItem(Item*, ofstream&, bool);
+    void saveMonster(Monster*, ofstream&);
+    void saveNPC(NPC*, ofstream&);
+
+    void loadPlayer(Player*, vector<Room*>&, ifstream&);
+    void loadRooms(vector<Room*>&, ifstream&);
+    void loadItem(Item*, ifstream&);
+    void loadMonster(Monster*, ifstream&);
+    void loadNPC(NPC*, ifstream&);
+
 
 public:
     Record();
-    void saveToFile(Player*, vector<Room>&);
-    void loadFromFile(Player*, vector<Room>&);
+    void saveToFile(Player*, vector<Room*>&);
+    void loadFromFile(Player*, vector<Room*>&);
 
 };
 

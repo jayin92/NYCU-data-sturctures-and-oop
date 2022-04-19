@@ -42,3 +42,7 @@ void Item::setAttack(int atk){
 void Item::setDefense(int def){
     this -> defense = def;
 }
+
+void Item::setType(string ty){
+    this -> type = ty;
+}
