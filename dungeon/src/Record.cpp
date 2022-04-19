@@ -221,14 +221,15 @@ void Record::loadPlayer(Player* player, vector<Room*> &rooms, ifstream& in){
     if(head != "null"){
         Item* item = new Item;
         loadItem(item, in);
+        player->increaseStates(-item->getHealth(), -item->getAttack(), -item->getDefense());
         player->setHead(item);
     }
     string body;
     in >> body;
     if(body != "null"){
-
         Item* item = new Item;
         loadItem(item, in);
+        player->increaseStates(-item->getHealth(), -item->getAttack(), -item->getDefense());
         player->setBody(item);
     }
     string left;
@@ -236,6 +237,7 @@ void Record::loadPlayer(Player* player, vector<Room*> &rooms, ifstream& in){
     if(left != "null"){
         Item* item = new Item;
         loadItem(item, in);
+        player->increaseStates(-item->getHealth(), -item->getAttack(), -item->getDefense());
         player->setLeft(item);
     }
     string right;
@@ -243,6 +245,7 @@ void Record::loadPlayer(Player* player, vector<Room*> &rooms, ifstream& in){
     if(right != "null"){
         Item* item = new Item;
         loadItem(item, in);
+        player->increaseStates(-item->getHealth(), -item->getAttack(), -item->getDefense());
         player->setRight(item);
     }
     int potionSize;

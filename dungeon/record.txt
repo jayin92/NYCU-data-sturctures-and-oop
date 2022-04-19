@@ -14,7 +14,6 @@ Welcome you to enter this dungeon.
 To escape this dungeon, you need to beat a monster called GPE.
 Here is the student ID card, this card is really helpful.
 Don't forget to pick it up.
-
 -
 0
 1
@@ -40,7 +39,19 @@ null
 null
 null
 0
+2
+monster
+Linear Algebra
+25
+25
+7
+7
+item
+SVD
+body
 0
+5
+10
 4
 0
 NYCU Student ID Card
@@ -48,7 +59,19 @@ NYCU Student ID Card
 9
 0
 11
+2
+monster
+Introduction to Computers
+15
+15
+5
+5
+item
+Pointer
+right
 0
+20
+5
 5
 0
 null
@@ -63,7 +86,6 @@ Hi, I'm Professor Chung.
 Seems like you have killed the Monster Calculus.
 My OCW is really good, huh.
 Hope you can run away from this dungeon.
-
 -
 0
 6
@@ -78,7 +100,6 @@ npc
 Gilbert Strang
 Hi, I'm Gilbert Strang.
 The author of a well-known textbook. To help you beat the Monster Linear Algebra, I have something to give you.
-
 -
 0
 7
@@ -103,7 +124,6 @@ Hi, I'm Professor Lee.
 The professor of General Physics. You said that you can't enter the room of physics.
 Here is the key to that room.
 Go and kill Monster Physics.
-
 -
 0
 9
@@ -133,6 +153,18 @@ null
 4
 null
 null
+2
+monster
+Data Structures
+30
+30
+17
+17
+item
+Treap
+key
+0
+0
 0
 11
 0
@@ -141,6 +173,24 @@ null
 13
 4
 16
+3
+monster
+OOP
+25
+25
+15
+15
+item
+STL
+left
+0
+5
+20
+item
+Heal Potion
+potion
+10
+0
 0
 12
 0
@@ -154,7 +204,6 @@ npc
 Alan Turing
 Hi, I'm Alan Turing.
 The famous computer scientist. To help you beat the Monster Introduction to Algorithms, I have something to give you.
-
 -
 1
 Turing Machine
@@ -180,7 +229,6 @@ npc
 George Boole
 Hi, I'm George Boole.
 The pioneer in Boolean Algebra. I have something to give you.
-
 -
 1
 Boolean Algebra
@@ -235,61 +283,37 @@ null
 null
 11
 null
-0
-jayinnn
-100
-100
-10055
-10050
-11
-16
 1
+monster
+GPE
+100
+100
+50
+50
+jayinnn
+1000
+980
+30
+30
+7
+5
+0
+null
+null
+null
+right
 Gram-schmidt Method
 right
 0
 10
 10
-null
-body
-SVD
-body
-0
-5
-10
-left
-STL
-left
-0
-5
-20
-right
-Pointer
-right
-0
-20
-5
-4
-Heal Potion
-potion
-10
-0
-0
+1
 Damage Potion
 potion
 0
 5
 0
-Damage Potion
-potion
-0
-5
-0
-Heal Potion
-potion
-10
-0
-0
-4
+3
 NYCU Student ID Card
 key
 0
@@ -301,11 +325,6 @@ key
 0
 0
 Schrodinger Equation
-key
-0
-0
-0
-Treap
 key
 0
 0

@@ -29,7 +29,7 @@ void Dungeon::createPlayer(){
     string name;
     cout << "Enter Your Name: ";
     cin >> name;
-    player = Player(name, 100, 10000, 10000);
+    player = Player(name, 1000, 20, 20);
     cout << "Hi, " << name << endl;
     player.triggerEvent(&player);
 }
@@ -185,12 +185,13 @@ void Dungeon::handleMovement(){
             cout << "(R)ight Room" << endl;
         }
         if(player.getCurrentRoom() -> getIsExit() == true){
+            avaRoom['E'] = avaRoom['e'] = nullptr;
             cout << "(E)xit" << endl;
         }
         char c;
         do{
             cout << "Which room do you want to go? ";
-        } while(cin >> c && (avaRoom.find(c) == avaRoom.end() && c != 'E' && c != 'e'));
+        } while(cin >> c && avaRoom.find(c) == avaRoom.end());
         if(c == 'E' || c == 'e'){
             cout << GRN << "Congratulations! Player " << player.getName() << ", you have exited the dungeon." << NC << endl;
             exit(0);

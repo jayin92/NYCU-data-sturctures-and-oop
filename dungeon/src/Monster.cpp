@@ -1,4 +1,9 @@
 #include "../include/Monster.h"
+#define NC "\e[0m"
+#define RED "\e[0;31m"
+#define GRN "\e[0;32m"
+#define CYN "\e[0;36m"
+#define REDB "\e[41m"
 
 Monster::Monster(): GameCharacter("", "Monster", 0, 0, 0), isBoss(false) {}
 
@@ -53,9 +58,9 @@ bool Monster::triggerEvent(Object* object){
                 << " damages to Player " << player -> getName() << endl;
             player -> setCurrentHealth(player->getCurrentHealth() - monster_dmg);
             if(player -> getCurrentHealth() <= 0){
-                cout << "Player " << player -> getName() << " is dead." << endl;
+                cout << REDB << "Player " << player -> getName() << " is dead." << NC << endl;
                 return false;
-            }            
+            }
         } else if(choice == 'P' || choice == 'p'){
             int idx = -2;
             do {
