@@ -29,7 +29,7 @@ void Dungeon::createPlayer(){
     string name;
     cout << "Enter Your Name: ";
     cin >> name;
-    player = Player(name, 1000, 20, 20);
+    player = Player(name, 100, 20, 20);
     cout << "Hi, " << name << endl;
     player.triggerEvent(&player);
 }
