@@ -29,7 +29,7 @@ void Dungeon::createPlayer(){
     string name;
     cout << "Enter Your Name: ";
     cin >> name;
-    player = Player(name, 100, 20, 20);
+    player = Player(name, 1000, 10000, 10000);
     cout << "Hi, " << name << endl;
     player.triggerEvent(&player);
 }
@@ -194,7 +194,7 @@ void Dungeon::handleMovement(){
         } while(cin >> c && avaRoom.find(c) == avaRoom.end());
         if(c == 'E' || c == 'e'){
             cout << GRN << "Congratulations! Player " << player.getName() << ", you have exited the dungeon." << NC << endl;
-            exit(0);
+            player.setCurrentRoom(nullptr);
         } else {
             player.changeRoom(avaRoom[c]);
         }
@@ -207,11 +207,13 @@ void Dungeon::handleMovement(){
 
 
 void Dungeon::handleEvent(Object* object){
-    if(object -> triggerEvent(&player)){
-        return;
-    } else {
-        exit(0);
-    }
+    object -> triggerEvent(&player);
+    return;
+}
+
+bool Dungeon::checkGameLogic(){
+    if(player.getCurrentRoom() == nullptr || player.getCurrentHealth() <= 0) return false;
+    else return true;
 }
 
 void Dungeon::chooseAction(vector<Object*> objects){
@@ -287,6 +289,9 @@ void Dungeon::startGame(){
 void Dungeon::runDungeon(){
     startGame();
     while(not_finished){
+        if(checkGameLogic() == false){
+            exit(0);
+        }
         chooseAction(player.getCurrentRoom() -> getObjects());
     }
 }

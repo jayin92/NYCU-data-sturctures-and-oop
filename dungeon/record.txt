@@ -14,6 +14,7 @@ Welcome you to enter this dungeon.
 To escape this dungeon, you need to beat a monster called GPE.
 Here is the student ID card, this card is really helpful.
 Don't forget to pick it up.
+
 -
 1
 NYCU Student ID Card
@@ -121,6 +122,7 @@ Hi, I'm Professor Chung.
 Seems like you have killed the Monster Calculus.
 My OCW is really good, huh.
 Hope you can run away from this dungeon.
+
 -
 0
 6
@@ -135,6 +137,7 @@ npc
 Gilbert Strang
 Hi, I'm Gilbert Strang.
 The author of a well-known textbook. To help you beat the Monster Linear Algebra, I have something to give you.
+
 -
 1
 Gram-schmidt Method
@@ -176,6 +179,7 @@ Hi, I'm Professor Lee.
 The professor of General Physics. You said that you can't enter the room of physics.
 Here is the key to that room.
 Go and kill Monster Physics.
+
 -
 1
 Ewant Account
@@ -261,6 +265,7 @@ npc
 Alan Turing
 Hi, I'm Alan Turing.
 The famous computer scientist. To help you beat the Monster Introduction to Algorithms, I have something to give you.
+
 -
 1
 Turing Machine
@@ -286,6 +291,7 @@ npc
 George Boole
 Hi, I'm George Boole.
 The pioneer in Boolean Algebra. I have something to give you.
+
 -
 1
 Boolean Algebra
