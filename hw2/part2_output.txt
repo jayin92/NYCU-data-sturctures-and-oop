@@ -1,0 +1,2 @@
+Dijkstra Cost: 1
+Bellman Ford Cost: 1

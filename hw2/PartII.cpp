@@ -1,12 +1,8 @@
 #include "PartII.h"
-#include <iostream>
-#include <fstream>
-#include <algorithm>
-#include <vector>
-#include <queue>
-#define INF 1e9
-using namespace std;
 
+#define INF 1e9
+
+using namespace std;
 
 void PartII::read(string file) {
     cout << "Part II reading..." << endl;

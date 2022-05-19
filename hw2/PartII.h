@@ -1,5 +1,12 @@
 #ifndef PARTII_H
 #include "SolverBase.h"
+#include <iostream>
+#include <fstream>
+#include <algorithm>
+#include <vector>
+#include <queue>
+
+using namespace std;
 
 class PartII : public SolverBase
 {
