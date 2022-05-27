@@ -1,2 +1,2 @@
-Dijkstra Cost: 1
-Bellman Ford Cost: 1
+Dijkstra Cost: 1000000000
+Bellman Ford Cost: 1000000000
