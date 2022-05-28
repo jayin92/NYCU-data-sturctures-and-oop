@@ -1,0 +1,29 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}ifndef PARTII\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZdq{}SolverBase.h\PYGZdq{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}fstream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}algorithm\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}vector\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}queue\PYGZgt{}}
+
+\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}
+
+\PYG{k}{class} \PYG{n+nc}{PartII} \PYG{o}{:} \PYG{k}{public} \PYG{n}{SolverBase}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{,} \PYG{n}{m}\PYG{p}{;} \PYG{c+c1}{// \PYGZsh{} of vertices and edges}
+    \PYG{k+kt}{bool} \PYG{n}{hasNegCyc} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;} \PYG{c+c1}{// has negative cycle in the graph or not}
+    \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{,} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{adj}\PYG{p}{;} \PYG{c+c1}{// Declare an adjacency list to save the graph (pair fisrt: vertex second: weight)}
+    \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{pair}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{,} \PYG{k+kt}{int}\PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}} \PYG{n}{abs\PYGZus{}adj}\PYG{p}{;} \PYG{c+c1}{// Declare an adjacency list to save the graph (pair fisrt: vertex second: abs(weight))}
+    \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{d}\PYG{p}{,} \PYG{n}{abs\PYGZus{}d}\PYG{p}{;} \PYG{c+c1}{// The shortest distance from node 0 to every other vertices}
+\PYG{k}{public}\PYG{o}{:}
+    \PYG{k+kt}{void} \PYG{n}{read}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{string}\PYG{p}{);} \PYG{c+c1}{// Read input from file}
+    \PYG{k+kt}{void} \PYG{n+nf}{solve}\PYG{p}{();} \PYG{c+c1}{// Main solve fucntion}
+    \PYG{k+kt}{void} \PYG{n+nf}{write}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{string}\PYG{p}{);} \PYG{c+c1}{// Write the output to file}
+    \PYG{k+kt}{void} \PYG{n+nf}{dijkstra}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{);} \PYG{c+c1}{// Dijkstra\PYGZsq{}s Algorithm}
+    \PYG{k+kt}{bool} \PYG{n+nf}{bellmanFord}\PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{);} \PYG{c+c1}{// Bellman\PYGZhy{}Ford\PYGZsq{}s Algorithm}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+cp}{\PYGZsh{}define PARTII\PYGZus{}H}
+\PYG{c+cp}{\PYGZsh{}endif}
+\end{Verbatim}

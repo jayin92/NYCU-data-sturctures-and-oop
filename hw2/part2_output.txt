@@ -1,2 +1,2 @@
-Dijkstra Cost: 1000000000
-Bellman Ford Cost: 1000000000
+10
+Negative loop detected!

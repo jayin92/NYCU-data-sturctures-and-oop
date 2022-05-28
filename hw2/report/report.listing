@@ -11,9 +11,9 @@ void PartII::read(string file) {
     // Resize the vectors
     d.resize(n);
     abs_d.resize(n);
-    adj.resize(n); 
+    adj.resize(n);
     abs_adj.resize(n);
-    
+
     // Build graph from input
     int u, v, w;
     for(int i=0;i<m;i++){
@@ -21,7 +21,7 @@ void PartII::read(string file) {
         adj[u].push_back({v, w});
         abs_adj[u].push_back({v, abs(w)});
     }
-     
+
     ifs.close();
 }
 void PartII::solve() {
@@ -30,7 +30,7 @@ void PartII::solve() {
 
     // Run Bellman-Ford algorithm from node 0.
     // And if function return false, it means there is negative cycle in the graph
-    hasNegCyc = !bellmanFord(0); 
+    hasNegCyc = !bellmanFord(0);
 }
 
 void PartII::write(string file) {
