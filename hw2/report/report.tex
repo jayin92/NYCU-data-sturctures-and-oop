@@ -64,7 +64,7 @@ heightrounded, % to avoid spurious underfull messages
 \author{110550088 李杰穎}
 \date{\today}
 
-\setCJKmainfont{Noto Serif CJK TC}
+\setCJKmainfont{Noto Serif TC}
 \setmonofont[Mapping=tex-text]{Consolas}
 
 \XeTeXlinebreaklocale "zh"             %這兩行一定要加，中文才能自動換行
@@ -533,11 +533,14 @@ bool PartII::bellmanFord(int src){
 
 \subsubsection{How to find path of the shortest path?}
 
+我們可以在程式中額外宣告一個 \texttt{parent} 陣列，此陣列是要記錄最短路徑中，每一個節點的前一個節點為何，我們只需要在 relaxing 的時候更新這個陣列即可。跑完兩種演算法後，我們從終點 backtracking 回到起點，最後就可以找到最短路徑了。
+
 \subsubsection{How Bellman-Ford Algorithm detect negative cycle?}
+
+因為在圖中，我們可以發現最短路徑最多就經過 $V-1$ 條邊，所以我們對所有邊 relaxing $V-1$ 次必定能找到最短路徑。但如果圖內有 negative loop 則此張圖就沒有最短路徑，因為我們可以透過重複經過此 negative loop 來使最短距離越來越小。而 Bellman-Ford 演算法即是在跑完 $V-1$ 迭代過程後再額外跑一次迭代，如果有任何一條邊可以被 relaxing 到，則此圖中就有 negative loop。
 
 \subsubsection{Which is the better algorithm in which condition?}
 
-
-
+如上所述 Dijkstra 演算法無法處理有負邊的情況，也無法判斷是否有負環。而 Bellman-Ford 演算法可以處理負邊也可以處理負環。但 Dijkstra 演算法的整體複雜度較佳，故如果確定圖上沒有負邊，則我們應該優先考慮使用 Dijkstra 演算法，但如果不確定是否有負邊，則我們應該使用 Bellman-Ford 演算法。
 
 \end{document}
