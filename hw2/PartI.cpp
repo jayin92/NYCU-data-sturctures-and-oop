@@ -19,16 +19,16 @@ void PartI::read(string file) {
     // Build graph 
     for(int i=0;i<m;i++){
         ifs >> u >> v >> w;
-        graph[u].push_back({v, w});
-        rev_graph[v].push_back({u, w});
+        graph[u].push_back({v, 1});
+        rev_graph[v].push_back({u, 1});
     }
     // Close the ifstream
     ifs.close();
 
     // Because we need to traverse from smallest index to the largest, thus we need to sort the adj. list
-    for(auto i: graph){
-        sort(i.begin(), i.end());
-    }
+    // for(int i=0;i<n;i++){
+    //     sort(graph[i].begin(), graph[i].end());
+    // }
 }
 
 void PartI::solve() {

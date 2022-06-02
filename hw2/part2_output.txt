@@ -1,2 +1,2 @@
-10
-Negative loop detected!
+13
+13
