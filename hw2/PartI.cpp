@@ -26,9 +26,9 @@ void PartI::read(string file) {
     ifs.close();
 
     // Because we need to traverse from smallest index to the largest, thus we need to sort the adj. list
-    // for(int i=0;i<n;i++){
-    //     sort(graph[i].begin(), graph[i].end());
-    // }
+    for(int i=0;i<n;i++){
+        sort(graph[i].begin(), graph[i].end());
+    }
 }
 
 void PartI::solve() {
@@ -124,7 +124,7 @@ void PartI::scc_revdfs(int v){
     // DFS runs on reverse graph
     finish[v] = 1;
     for(auto i: rev_graph[v]){
-        if(finish[v] == 0){
+        if(finish[i.first] == 0){
             scc_revdfs(i.first);
         }
     }

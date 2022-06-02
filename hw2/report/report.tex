@@ -64,7 +64,7 @@ heightrounded, % to avoid spurious underfull messages
 \author{110550088 李杰穎}
 \date{\today}
 
-\setCJKmainfont{Noto Serif TC}
+\setCJKmainfont{Noto Serif CJK TC}
 \setmonofont[Mapping=tex-text]{Consolas}
 
 \XeTeXlinebreaklocale "zh"             %這兩行一定要加，中文才能自動換行
@@ -166,15 +166,15 @@ void PartI::read(string file) {
     // Build graph 
     for(int i=0;i<m;i++){
         ifs >> u >> v >> w;
-        graph[u].push_back({v, w});
-        rev_graph[v].push_back({u, w});
+        graph[u].push_back({v, 1});
+        rev_graph[v].push_back({u, 1});
     }
     // Close the ifstream
     ifs.close();
 
     // Because we need to traverse from smallest index to the largest, thus we need to sort the adj. list
-    for(auto i: graph){
-        sort(i.begin(), i.end());
+    for(int i=0;i<n;i++){
+        sort(graph[i].begin(), graph[i].end());
     }
 }
 
@@ -271,7 +271,7 @@ void PartI::scc_revdfs(int v){
     // DFS runs on reverse graph
     finish[v] = 1;
     for(auto i: rev_graph[v]){
-        if(finish[v] == 0){
+        if(finish[i.first] == 0){
             scc_revdfs(i.first);
         }
     }
@@ -468,9 +468,9 @@ void PartII::dijkstra(int src){
         pq.pop();
         int u = edge.second;
         for(auto i: abs_adj[u]){
-            int w = i.first;
-            int v = i.second;
-            int alt = abs_d[u] + i.first; // Alternate path's distance
+            int v = i.first;
+            int w = i.second;
+            int alt = abs_d[u] + w; // Alternate path's distance
 
             // If alternate distance less than current distance save in distance vector
             if(alt < abs_d[v]){
@@ -517,6 +517,7 @@ bool PartII::bellmanFord(int src){
 
     return true;
 }
+
 \end{minted}
 \end{code}
 

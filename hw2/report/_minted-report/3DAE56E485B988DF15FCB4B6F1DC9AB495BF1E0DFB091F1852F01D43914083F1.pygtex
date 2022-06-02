@@ -20,15 +20,15 @@
     \PYG{c+c1}{// Build graph}
     \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{m}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
         \PYG{n}{ifs} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{u} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{v} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{w}\PYG{p}{;}
-        \PYG{n}{graph}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(\PYGZob{}}\PYG{n}{v}\PYG{p}{,} \PYG{n}{w}\PYG{p}{\PYGZcb{});}
-        \PYG{n}{rev\PYGZus{}graph}\PYG{p}{[}\PYG{n}{v}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(\PYGZob{}}\PYG{n}{u}\PYG{p}{,} \PYG{n}{w}\PYG{p}{\PYGZcb{});}
+        \PYG{n}{graph}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(\PYGZob{}}\PYG{n}{v}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{\PYGZcb{});}
+        \PYG{n}{rev\PYGZus{}graph}\PYG{p}{[}\PYG{n}{v}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(\PYGZob{}}\PYG{n}{u}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{\PYGZcb{});}
     \PYG{p}{\PYGZcb{}}
     \PYG{c+c1}{// Close the ifstream}
     \PYG{n}{ifs}\PYG{p}{.}\PYG{n}{close}\PYG{p}{();}
 
     \PYG{c+c1}{// Because we need to traverse from smallest index to the largest, thus we need to sort the adj. list}
-    \PYG{k}{for}\PYG{p}{(}\PYG{k}{auto} \PYG{n+nl}{i}\PYG{p}{:} \PYG{n}{graph}\PYG{p}{)\PYGZob{}}
-        \PYG{n}{sort}\PYG{p}{(}\PYG{n}{i}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),} \PYG{n}{i}\PYG{p}{.}\PYG{n}{end}\PYG{p}{());}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{i}\PYG{o}{\PYGZlt{}}\PYG{n}{n}\PYG{p}{;}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+        \PYG{n}{sort}\PYG{p}{(}\PYG{n}{graph}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{begin}\PYG{p}{(),} \PYG{n}{graph}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{end}\PYG{p}{());}
     \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
 
@@ -125,7 +125,7 @@
     \PYG{c+c1}{// DFS runs on reverse graph}
     \PYG{n}{finish}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
     \PYG{k}{for}\PYG{p}{(}\PYG{k}{auto} \PYG{n+nl}{i}\PYG{p}{:} \PYG{n}{rev\PYGZus{}graph}\PYG{p}{[}\PYG{n}{v}\PYG{p}{])\PYGZob{}}
-        \PYG{k}{if}\PYG{p}{(}\PYG{n}{finish}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}}
+        \PYG{k}{if}\PYG{p}{(}\PYG{n}{finish}\PYG{p}{[}\PYG{n}{i}\PYG{p}{.}\PYG{n}{first}\PYG{p}{]} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}}
             \PYG{n}{scc\PYGZus{}revdfs}\PYG{p}{(}\PYG{n}{i}\PYG{p}{.}\PYG{n}{first}\PYG{p}{);}
         \PYG{p}{\PYGZcb{}}
     \PYG{p}{\PYGZcb{}}

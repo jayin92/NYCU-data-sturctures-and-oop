@@ -65,9 +65,9 @@
         \PYG{n}{pq}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{();}
         \PYG{k+kt}{int} \PYG{n}{u} \PYG{o}{=} \PYG{n}{edge}\PYG{p}{.}\PYG{n}{second}\PYG{p}{;}
         \PYG{k}{for}\PYG{p}{(}\PYG{k}{auto} \PYG{n+nl}{i}\PYG{p}{:} \PYG{n}{abs\PYGZus{}adj}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])\PYGZob{}}
-            \PYG{k+kt}{int} \PYG{n}{w} \PYG{o}{=} \PYG{n}{i}\PYG{p}{.}\PYG{n}{first}\PYG{p}{;}
-            \PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{n}{i}\PYG{p}{.}\PYG{n}{second}\PYG{p}{;}
-            \PYG{k+kt}{int} \PYG{n}{alt} \PYG{o}{=} \PYG{n}{abs\PYGZus{}d}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{i}\PYG{p}{.}\PYG{n}{first}\PYG{p}{;} \PYG{c+c1}{// Alternate path\PYGZsq{}s distance}
+            \PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{n}{i}\PYG{p}{.}\PYG{n}{first}\PYG{p}{;}
+            \PYG{k+kt}{int} \PYG{n}{w} \PYG{o}{=} \PYG{n}{i}\PYG{p}{.}\PYG{n}{second}\PYG{p}{;}
+            \PYG{k+kt}{int} \PYG{n}{alt} \PYG{o}{=} \PYG{n}{abs\PYGZus{}d}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{w}\PYG{p}{;} \PYG{c+c1}{// Alternate path\PYGZsq{}s distance}
 
             \PYG{c+c1}{// If alternate distance less than current distance save in distance vector}
             \PYG{k}{if}\PYG{p}{(}\PYG{n}{alt} \PYG{o}{\PYGZlt{}} \PYG{n}{abs\PYGZus{}d}\PYG{p}{[}\PYG{n}{v}\PYG{p}{])\PYGZob{}}
