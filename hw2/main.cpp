@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cassert>
 #include <string>
-#include "PartI.h"
-#include "PartII.h"
+#include "Part1.h"
+#include "Part2.h"
 
 using namespace std;
 

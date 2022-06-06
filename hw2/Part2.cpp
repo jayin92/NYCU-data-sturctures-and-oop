@@ -1,4 +1,4 @@
-#include "PartII.h"
+#include "Part2.h"
 
 #define INF 1e9
 
@@ -11,9 +11,9 @@ void PartII::read(string file) {
     // Resize the vectors
     d.resize(n);
     abs_d.resize(n);
-    adj.resize(n);
+    adj.resize(n); 
     abs_adj.resize(n);
-
+    
     // Build graph from input
     int u, v, w;
     for(int i=0;i<m;i++){
@@ -21,7 +21,7 @@ void PartII::read(string file) {
         adj[u].push_back({v, w});
         abs_adj[u].push_back({v, abs(w)});
     }
-
+     
     ifs.close();
 }
 void PartII::solve() {
@@ -30,7 +30,7 @@ void PartII::solve() {
 
     // Run Bellman-Ford algorithm from node 0.
     // And if function return false, it means there is negative cycle in the graph
-    hasNegCyc = !bellmanFord(0);
+    hasNegCyc = !bellmanFord(0); 
 }
 
 void PartII::write(string file) {
@@ -90,7 +90,7 @@ bool PartII::bellmanFord(int src){
                 int alt = d[u] + w;
 
                 // If alternate distance less than current distance save in distance vector
-                if(alt < d[v]){
+                if(d[u] != INF && alt < d[v]){
                     d[v] = alt; // Update the distance in distance vector
                 }
             }
@@ -103,7 +103,7 @@ bool PartII::bellmanFord(int src){
             int v = k.first;
             int w = k.second;
             int alt = d[u] + w;
-            if(alt < d[v]){
+            if(d[u] != INF && alt < d[v]){
                 // If there still have edge that can be relaxed in nth times of relaxation process.
                 // Then there exists a negative cycle
                 return false;
@@ -113,4 +113,3 @@ bool PartII::bellmanFord(int src){
 
     return true;
 }
-

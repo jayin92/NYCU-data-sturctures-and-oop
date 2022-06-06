@@ -64,7 +64,7 @@ heightrounded, % to avoid spurious underfull messages
 \author{110550088 李杰穎}
 \date{\today}
 
-\setCJKmainfont{Noto Serif CJK TC}
+\setCJKmainfont{Noto Serif TC}
 \setmonofont[Mapping=tex-text]{Consolas}
 
 \XeTeXlinebreaklocale "zh"             %這兩行一定要加，中文才能自動換行
@@ -85,12 +85,12 @@ heightrounded, % to avoid spurious underfull messages
 
 \subsection{Implementation Detail}
 
-以下是 \texttt{PartI.h}，內有 Part 1 會用到的所有函數及變數。
+以下是 \texttt{Part1.h}，內有 Part 1 會用到的所有函數及變數。
 
 \begin{code}
-\captionof{listing}{\texttt{PartI.h}}
+\captionof{listing}{\texttt{Part1.h}}
 \begin{minted}
-#ifndef PARTI_H
+#ifndef PART1_H
 #include "SolverBase.h"
 #include <algorithm>
 #include <vector>
@@ -143,9 +143,9 @@ Kosaraju's algorithm 主要演算步驟如下：
 以下就是 Part 1 實作的所有程式碼，程式碼的解釋部分我已經寫在註解。
 
 \begin{code}
-\captionof{listing}{\texttt{PartI.cpp}}
+\captionof{listing}{\texttt{Part1.cpp}}
 \begin{minted}
-#include "PartI.h"
+#include "Part1.h"
 
 using namespace std;
 
@@ -362,10 +362,10 @@ Dijsktra 演算法僅能處理無負邊權的圖，而 Bellman-Ford 演算法可
 
 \subsection{Implementation Detail}
 
-以下為 \texttt{PartII.h}，有本部分會用到的函數及變數。
+以下為 \texttt{Part2.h}，有本部分會用到的函數及變數。
 
 \begin{code}
-\captionof{listing}{\texttt{PartII.h}}
+\captionof{listing}{\texttt{Part2.h}}
 \begin{minted}
 #ifndef PARTII_H
 #include "SolverBase.h"
@@ -400,9 +400,9 @@ public:
 以下就是 Part 2 的所有程式碼，解釋的部分已放在註解中。
 
 \begin{code}
-\captionof{listing}{\texttt{PartII.cpp}}
+\captionof{listing}{\texttt{Part2.cpp}}
 \begin{minted}
-#include "PartII.h"
+#include "Part2.h"
 
 #define INF 1e9
 
@@ -494,7 +494,7 @@ bool PartII::bellmanFord(int src){
                 int alt = d[u] + w;
 
                 // If alternate distance less than current distance save in distance vector
-                if(alt < d[v]){
+                if(d[u] != INF && alt < d[v]){
                     d[v] = alt; // Update the distance in distance vector
                 }
             }
@@ -507,7 +507,7 @@ bool PartII::bellmanFord(int src){
             int v = k.first;
             int w = k.second;
             int alt = d[u] + w;
-            if(alt < d[v]){
+            if(d[u] != INF && alt < d[v]){
                 // If there still have edge that can be relaxed in nth times of relaxation process.
                 // Then there exists a negative cycle
                 return false;
@@ -517,7 +517,6 @@ bool PartII::bellmanFord(int src){
 
     return true;
 }
-
 \end{minted}
 \end{code}
 
